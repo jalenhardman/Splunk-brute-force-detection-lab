@@ -1,1 +1,4 @@
-
+index=main source="*auth_attack.log*" fail OR Failed
+| rex "from (?<src_ip>\d+\.\d+\.\d+\.\d+)"
+| stats count by src_ip
+| sort -count
